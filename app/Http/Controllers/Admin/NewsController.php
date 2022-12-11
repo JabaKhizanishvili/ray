@@ -89,7 +89,7 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        // dd($request->post());
+        dd($request->post());
         $saveData = Arr::except($request->except('_token'), []);
         // dd($saveData);
         // $saveData['status'] = isset($saveData['status']) && (bool)$saveData['status'];

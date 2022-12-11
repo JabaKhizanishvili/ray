@@ -61,7 +61,7 @@ export default function Layout({ children, seo = null }) {
             <Footer />
             {/*</Fragment>*/}
             {/*</Router>*/}
-            <Preloader loading={loading} />
+            {/* <Preloader loading={loading} /> */}
         </>
     );
 }

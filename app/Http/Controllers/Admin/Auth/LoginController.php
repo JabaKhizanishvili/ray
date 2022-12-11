@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  app/Http/Controllers/Admin/Auth/AuthController.php
  *
@@ -12,6 +13,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Auth\LoginRequest;
+use Illuminate\Http\Request;
 
 /**
  * Class AuthController
@@ -33,12 +35,12 @@ class LoginController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function loginView()
+    public function loginView(Request $request)
     {
         $pageConfigs = ['bodyCustomClass' => 'login-bg', 'isCustomizer' => false];
 
         //return view('admin.auth.login', []);
-
+        // dd($request->ip());
         return view('admin.nowa.views.login.signin');
     }
 
@@ -55,8 +57,8 @@ class LoginController extends Controller
         if (!\Auth::attempt([
             'email' => $request->email,
             'password' => $request->password,
-        ],$request->remember)) {
-             return back()->with('danger','Email or Password is incorrect!');
+        ], $request->remember)) {
+            return back()->with('danger', 'Email or Password is incorrect!');
         }
 
         return redirect('/ge/adminpanel/page');
